@@ -1,7 +1,6 @@
 package com.wust.mymusic.response.login;
 
 import android.accounts.Account;
-import android.provider.ContactsContract;
 
 import com.google.gson.annotations.SerializedName;
 import com.wust.mymusic.response.common.BindingsItem;
@@ -21,7 +20,7 @@ public class LoginResponse implements Serializable {
     private int loginType;
 
     @SerializedName("profile")
-    private ContactsContract.Profile profile;
+    private Profile profile;
 
     @SerializedName("bindings")
     private List<BindingsItem> bindings;
