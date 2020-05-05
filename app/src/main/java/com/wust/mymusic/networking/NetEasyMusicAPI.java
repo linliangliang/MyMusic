@@ -11,5 +11,4 @@ import retrofit2.http.Query;
 public interface NetEasyMusicAPI {
     @GET(ConstantUtils.CELLPHONE_API)
     Observable<LoginResponse> loginByPhone(@Query("phone") String phone, @Query("password") String password);
-
 }

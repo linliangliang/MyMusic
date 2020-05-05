@@ -23,7 +23,7 @@
         android:ems="10"
         android:hint="@string/mobile_number_hint"
         android:inputType="phone"
-        android:text="15801158993"
+        android:text="18827669410"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"

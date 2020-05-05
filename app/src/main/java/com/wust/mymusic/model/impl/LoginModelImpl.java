@@ -1,6 +1,7 @@
 package com.wust.mymusic.model.impl;
 
 import android.text.TextUtils;
+import android.util.Log;
 
 import com.blankj.utilcode.util.ConvertUtils;
 import com.blankj.utilcode.util.ToastUtils;
@@ -12,8 +13,13 @@ import com.wust.mymusic.networking.NetEasyMusicService;
 import com.wust.mymusic.response.login.LoginResponse;
 import com.wust.mymusic.util.AccountUtils;
 import com.wust.mymusic.util.ConstantUtils;
+import com.wust.mymusic.util.LogUtil;
+import com.wust.mymusic.util.TagUtils;
 
 public class LoginModelImpl implements LoginModel {
+
+    private final String TAG = TagUtils.getTag(this.getClass());
+
     NetEasyMusicService netEasyMusicService;
 
     public LoginModelImpl(NetEasyMusicService netEasyMusicService) {
@@ -31,17 +37,21 @@ public class LoginModelImpl implements LoginModel {
         if (TextUtils.isEmpty(user.getPassword())) {
             loginCallback.onUsernameError(Utils.getApp().getResources().getString(R.string.password));
         }
+        LogUtil.i(TAG, "netEasyMusicService.login begin");
         netEasyMusicService.login(user.getUsername(), user.getPassword(), new NetEasyMusicService.Callback<LoginResponse>() {
             @Override
             public void onSuccess(LoginResponse response) {
+                LogUtil.i(TAG, "login onSuccess");
                 loginCallback.onSuccess(response);
                 //save user info
                 user.setUid(response.getProfile().getUserId() + "");
+                //本地保存登录用户信息，下次直接进入主页
                 AccountUtils.store(user);
             }
 
             @Override
             public void onError(Throwable e) {
+                LogUtil.i(TAG, "login onError");
                 String message = e.getMessage();
                 ToastUtils.showLong(message);
                 if (message.contains(ConstantUtils.INCORRECT_PASSWORD + "")) {

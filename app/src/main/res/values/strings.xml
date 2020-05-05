@@ -74,4 +74,6 @@
     <string name="try_password_limit">密码错误超过限制</string>
     <string name="play_all">Play all</string>
     <string name="tracks">tracks</string>
+
+    <string name="register_tip">注册功能待开发</string>
 </resources>

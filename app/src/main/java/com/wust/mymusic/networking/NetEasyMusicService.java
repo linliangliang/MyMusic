@@ -1,11 +1,16 @@
 package com.wust.mymusic.networking;
 
 import com.wust.mymusic.response.login.LoginResponse;
+import com.wust.mymusic.util.LogUtil;
+
+import java.util.concurrent.TimeUnit;
 
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
+import okhttp3.OkHttpClient;
+import okhttp3.logging.HttpLoggingInterceptor;
 
 public class NetEasyMusicService {
 
@@ -15,8 +20,9 @@ public class NetEasyMusicService {
         this.netEasyMusicAPI = netEaseMusicAPI;
     }
 
-    public void login(String phone, String password, final Callback callback){
-        netEasyMusicAPI.loginByPhone(phone,password)
+    public void login(String phone, String password, final Callback callback) {
+
+        netEasyMusicAPI.loginByPhone(phone, password)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<LoginResponse>() {
@@ -38,7 +44,6 @@ public class NetEasyMusicService {
                     public void onComplete() {
                     }
                 });
-
     }
 
     public interface Callback<T> {

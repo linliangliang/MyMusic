@@ -2,6 +2,7 @@ package com.wust.mymusic.ui.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -17,6 +18,8 @@ import com.wust.mymusic.presenter.impl.LoginPresenterImpl;
 import com.wust.mymusic.response.login.LoginResponse;
 import com.wust.mymusic.util.ActivityUtils;
 import com.wust.mymusic.util.ConstantUtils;
+import com.wust.mymusic.util.LogUtil;
+import com.wust.mymusic.util.TagUtils;
 import com.wust.mymusic.view.LoginView;
 
 import javax.inject.Inject;
@@ -26,6 +29,8 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class LoginActivity extends BaseApp implements LoginView {
+
+    private final String TAG = TagUtils.getTag(this.getClass(), true);
 
     @BindView(R.id.et_login_phone)
     EditText etLoginPhone;
@@ -58,11 +63,11 @@ public class LoginActivity extends BaseApp implements LoginView {
         loginPresenter = new LoginPresenterImpl(netEasyMusicService, this);
     }
 
-
     @OnClick(R.id.btn_login)
-    private void loginCallback() {
+    public void loginCallback() {
         String phone = etLoginPhone.getText().toString();
         String password = etLoginPassword.getText().toString();
+        LogUtil.i(TAG, "phone=" + phone + " password=" + password);
         loginPresenter.validateCredentials(new User(phone, password));
     }
 
@@ -91,6 +96,7 @@ public class LoginActivity extends BaseApp implements LoginView {
         hideProgress();
         Intent intent = new Intent(this, MainActivity.class);
         intent.putExtra(ConstantUtils.LOGIN_RESPONSE_KEY, loginResponse);
+        LogUtil.i(TAG, "loginSuccess...");
         startActivity(intent);
         finish();
     }

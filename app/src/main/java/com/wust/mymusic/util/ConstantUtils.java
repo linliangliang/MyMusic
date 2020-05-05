@@ -13,7 +13,7 @@ public class ConstantUtils {
     /**
      * NetEase Music API URL
      */
-    public static final String BASE_URL = "http://192.168.0.108:3000";
+    public static final String BASE_URL = "http://39.106.174.3:3000";
     public final static String CELLPHONE_API = "/login/cellphone";
     public final static String USER_DETAIL_API = "/user/detail";
     public final static String SEARCH_API = "/search";

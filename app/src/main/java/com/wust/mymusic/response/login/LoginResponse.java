@@ -1,7 +1,5 @@
 package com.wust.mymusic.response.login;
 
-import android.accounts.Account;
-
 import com.google.gson.annotations.SerializedName;
 import com.wust.mymusic.response.common.BindingsItem;
 

@@ -12,10 +12,12 @@ import javax.inject.Inject;
 
 import lombok.Data;
 import androidx.appcompat.app.AppCompatActivity;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
 @Data
+@EqualsAndHashCode(callSuper = true)
 public class BaseApp extends AppCompatActivity {
 
     Deps deps;
