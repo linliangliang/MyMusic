@@ -8,6 +8,7 @@ import android.os.Handler;
 import com.wust.mymusic.R;
 import com.wust.mymusic.presenter.SplashPresenter;
 import com.wust.mymusic.presenter.impl.SplashPresenterImpl;
+import com.wust.mymusic.util.ActivityUtils;
 import com.wust.mymusic.view.SplashView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,6 +21,8 @@ public class SplashActivity extends Activity implements SplashView {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //是否显示状态栏目
+        ActivityUtils.requestFullScreen(this, false);
         setContentView(R.layout.activity_splash);
         setUpMVP();
 
