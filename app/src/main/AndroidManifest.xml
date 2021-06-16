@@ -13,8 +13,8 @@
         android:usesCleartextTraffic="true">
         <activity
             android:name=".ui.activities.RegisterActivity"
-            android:parentActivityName=".ui.activities.AccountActivity"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:label="@string/register"
+            android:parentActivityName=".ui.activities.AccountActivity"></activity>
         <activity
             android:name=".ui.activities.SplashActivity"
             android:theme="@style/AppTheme.NoActionBar">
@@ -25,15 +25,13 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.activities.MainActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:name=".ui.activities.MainActivity" />
         <activity
-            android:name=".ui.activities.AccountActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:name=".ui.activities.AccountActivity" />
         <activity
             android:name=".ui.activities.LoginActivity"
-            android:parentActivityName=".ui.activities.AccountActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:label="@string/login_with_mobile"
+            android:parentActivityName=".ui.activities.AccountActivity" />
     </application>
     <permission android:name="android.permission.MEDIA_CONTENT_CONTROL" />
 
