@@ -37,6 +37,7 @@ dependencies {
     /*弹簧特征的动画效果*/
     implementation 'androidx.dynamicanimation:dynamicanimation:1.0.0'
     implementation 'com.jakewharton:butterknife:10.2.1'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.1'
     /*强大的工具类*/
     implementation 'com.blankj:utilcode:1.25.9'
