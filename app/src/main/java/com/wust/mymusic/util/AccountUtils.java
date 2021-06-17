@@ -2,7 +2,6 @@ package com.wust.mymusic.util;
 
 
 import android.content.Context;
-import android.text.TextUtils;
 
 import com.blankj.utilcode.util.SPUtils;
 import com.wust.mymusic.R;
