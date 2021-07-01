@@ -23,6 +23,16 @@ public class SplashPresenterImpl implements SplashPresenter, SplashModel.SplashC
     }
 
     @Override
+    public void getAD() {
+        mSplashModel.getAD(this);
+    }
+
+    @Override
+    public void showAD() {
+        mSplashView.showAD("");
+    }
+
+    @Override
     public void navigateMain() {
         mSplashView.navigateMain();
     }

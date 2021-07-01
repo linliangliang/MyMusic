@@ -16,4 +16,15 @@
         <!--<item name="android:windowFullscreen">true</item>-->
     </style>
 
+    <style name="ad_button_style">
+        <item name="android:minHeight">0dp</item>
+        <item name="android:minWidth">0dp</item>
+        <item name="android:paddingLeft">16dp</item>
+        <item name="android:paddingRight">16dp</item>
+        <item name="android:paddingBottom">4dp</item>
+        <item name="android:paddingTop">2dp</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:background">@drawable/ad_button_style</item>
+    </style>
+
 </resources>

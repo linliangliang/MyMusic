@@ -23,7 +23,6 @@ public class BaseApp extends AppCompatActivity {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        getSupportActionBar().hide();
         super.onCreate(savedInstanceState);
         File cacheFile = new File(getCacheDir(), "responses");
         deps = DaggerDeps.builder().networkModule(new NetworkModule(cacheFile)).build();

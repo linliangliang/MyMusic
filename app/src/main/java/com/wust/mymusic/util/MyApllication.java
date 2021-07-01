@@ -17,6 +17,7 @@ public class MyApllication extends Application {
         return netEasyMusicService;
     }
 
+    //mainActivity中设置，也可以在splashActivity中设置
     public static void setNetEasyMusicService(NetEasyMusicService netEasyMusicService) {
         MyApllication.netEasyMusicService = netEasyMusicService;
     }
@@ -24,7 +25,13 @@ public class MyApllication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        //1、启动service
+        //1、启动唱歌的service
         //2、启动线程创建数据库
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+
+            }
+        }).start();
     }
 }
