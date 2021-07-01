@@ -18,4 +18,9 @@ public class SplashModelImpl implements SplashModel {
             callback.navigateMain();
         }
     }
+
+    @Override
+    public void getAD(SplashCallback callback) {
+        callback.showAD();
+    }
 }

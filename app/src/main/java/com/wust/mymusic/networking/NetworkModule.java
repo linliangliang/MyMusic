@@ -43,8 +43,15 @@ public class NetworkModule {
             e.printStackTrace();
         }
 
-        return new Retrofit.Builder()
+        /*return new Retrofit.Builder()
                 .baseUrl(ConstantUtils.BASE_URL)
+                .client(getOkHttpClient(cache))
+                .addConverterFactory(GsonConverterFactory.create())
+                .addConverterFactory(ScalarsConverterFactory.create())
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .build();*/
+
+        return new Retrofit.Builder().baseUrl(ConstantUtils.BASE_URL)
                 .client(getOkHttpClient(cache))
                 .addConverterFactory(GsonConverterFactory.create())
                 .addConverterFactory(ScalarsConverterFactory.create())
