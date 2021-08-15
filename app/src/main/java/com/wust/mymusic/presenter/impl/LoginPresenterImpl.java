@@ -11,14 +11,18 @@ import com.wust.mymusic.util.LogUtil;
 import com.wust.mymusic.util.TagUtils;
 import com.wust.mymusic.view.LoginView;
 
+import java.lang.ref.WeakReference;
+
 public class LoginPresenterImpl implements LoginPresenter, LoginModel.LoginCallback {
 
     private String TAG = TagUtils.getTag(this.getClass());
     private LoginView loginView;
     private LoginModel loginModule;
+    //private WeakReference<LoginView> mLoginViewWeakReference;
 
-    public LoginPresenterImpl(NetEasyMusicService netEasyMusicService, LoginActivity loginActivity) {
-        this.loginView = loginActivity;
+    public LoginPresenterImpl(NetEasyMusicService netEasyMusicService, LoginView mLoginView) {
+        this.loginView = mLoginView;
+        //mLoginViewWeakReference = new WeakReference<>(mLoginView);
         this.loginModule = new LoginModelImpl(netEasyMusicService);
     }
 
@@ -30,6 +34,12 @@ public class LoginPresenterImpl implements LoginPresenter, LoginModel.LoginCallb
             loginView.hideKeyboard();
         }
         loginModule.login(user, this);
+    }
+
+    @Override
+    public void onDestroy() {
+        loginView = null;
+        System.gc();
     }
 
     @Override

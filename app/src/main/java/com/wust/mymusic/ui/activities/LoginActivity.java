@@ -101,6 +101,16 @@ public class LoginActivity extends BaseApp implements LoginView {
         finish();
     }
 
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if(loginPresenter != null){
+            loginPresenter.onDestroy();
+            loginPresenter = null;
+        }
+    }
+
     @Override
     public void hideKeyboard() {
         ActivityUtils.hideKeyboard(this);

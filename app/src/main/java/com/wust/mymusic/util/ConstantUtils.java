@@ -2,6 +2,7 @@ package com.wust.mymusic.util;
 
 public class ConstantUtils {
 
+    public final static boolean isLocalTest = false;//本地测试开关
     public final static int PHONE_NUMBER_LENGTH = 11; // China phone number length is 11
 
     /**
@@ -9,11 +10,10 @@ public class ConstantUtils {
      */
     public final static String LOGIN_RESPONSE_KEY = "com.wust.neteasemusic_login_response_key";
 
-
     /**
      * NetEase Music API URL
      */
-    public static final String BASE_URL = "http://39.106.174.3:3000";
+    public static final String BASE_URL = "http://192.168.0.109:3000";
     public final static String CELLPHONE_API = "/login/cellphone";
     public final static String USER_DETAIL_API = "/user/detail";
     public final static String SEARCH_API = "/search";
@@ -25,6 +25,14 @@ public class ConstantUtils {
     public final static String RECOMMEND_SONG_LIST_API = "/recommend/resource";
     public final static String PLAYLIST_DETAIL_API = "/playlist/detail";
 
+
+    /**
+     * 本地服务器测试
+     */
+    public static final String LOCAL_BASE_URL = "http//192.168.0.109:8080/springbootweb01";
+    public static final String LOCAL_UPLOAD_API = "/fil/upload";
+    public static final String LOCAL_INDEX_API = "/index.html";
+    public static final String LOCAL_DOWNLAOD_API = "/file/download";
 
     /**
      * HTTP STATUS CODE
@@ -58,4 +66,10 @@ public class ConstantUtils {
     public final static String SP_CURRENT_PLAYLIST_INDEX_KEY = "play_list_index";
     public final static String SP_CURRENT_SEARCH_KEYWORD_KEY = "search_keyword";
     public final static String SP_CURRENT_SEARCH_OFFSET_KEY = "search_offset";
+
+    /**
+     * 广告URL
+     */
+    public final static String AD_URI_KEY = "AD_URI";
+    public final static String AD_IMAGE_KEY = "AD_IMAGE";
 }

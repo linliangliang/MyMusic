@@ -52,6 +52,7 @@ public class AccountActivity extends AppCompatActivity implements AccountView {
     public void navigateLogin() {
         LogUtil.i(TAG, "Login");
         startActivity(new Intent(this, LoginActivity.class));
+        finish();
     }
 
 

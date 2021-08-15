@@ -3,6 +3,7 @@ package com.wust.mymusic.model;
 public interface SplashModel {
 
     void checkLogin(SplashCallback callback);
+
     void getAD(SplashCallback callback);
 
     interface SplashCallback {

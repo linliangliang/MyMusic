@@ -2,6 +2,7 @@ package com.wust.mymusic.util;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.os.Build;
 import android.view.View;
@@ -47,6 +48,19 @@ public class ActivityUtils {
         if (view != null) {
             InputMethodManager imm = (InputMethodManager) activity.getSystemService(Context.INPUT_METHOD_SERVICE);
             imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+        }
+    }
+
+    public static boolean checkPackage(Context context, String packageName) {
+        if (packageName == null || "".equals(packageName))
+            return false;
+        try {
+            context.getPackageManager().getApplicationInfo(packageName, PackageManager
+                    .GET_UNINSTALLED_PACKAGES);
+            return true;
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+            return false;
         }
     }
 
