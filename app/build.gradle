@@ -93,4 +93,10 @@ dependencies {
     implementation "androidx.room:room-runtime:2.1.0-alpha02"
     annotationProcessor "androidx.room:room-compiler:2.1.0-alpha02" // use kapt for Kotlin
     implementation "androidx.room:room-rxjava2:2.1.0-alpha02"
+
+    /**
+     * 权限管理
+     */
+    implementation 'com.github.hotchemi:permissionsdispatcher:4.0.0'
+    annotationProcessor "com.github.hotchemi:permissionsdispatcher-processor:4.0.0"
 }

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/btn_startdownload"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="开始下载" />
+    <Button
+        android:id="@+id/btn_stopdownload"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="暂停下载"
+        android:layout_toRightOf="@+id/btn_startdownload"/>
+
+
+    <TextView
+        android:id="@+id/tv_save_file_progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="文件保存的进度"
+        android:layout_below="@+id/btn_stopdownload">
+    </TextView>
+    <ProgressBar
+        android:id="@+id/save_file_progressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="7.5dp"
+        android:max="100"
+        android:progress="0"
+        android:visibility="visible"
+        android:layout_toRightOf="@+id/tv_save_file_progressBar"
+        android:layout_alignBaseline="@+id/tv_save_file_progressBar"/>
+
+    <TextView
+        android:id="@+id/tv_down_file_progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="文件下载的进度"
+        android:layout_below="@+id/tv_save_file_progressBar">
+    </TextView>
+    <ProgressBar
+        android:id="@+id/download_file_progressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="7.5dp"
+        android:max="100"
+        android:progress="0"
+        android:visibility="visible"
+        android:layout_toRightOf="@+id/tv_down_file_progressBar"
+        android:layout_alignBaseline="@+id/tv_down_file_progressBar" />
+
+</RelativeLayout>

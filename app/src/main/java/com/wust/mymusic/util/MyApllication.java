@@ -31,10 +31,6 @@ public class MyApllication extends Application {
         MyApllication.netEasyMusicService = netEasyMusicService;
     }
 
-    public static NetEasyMusicService getNetEaseMusicService() {
-        return netEasyMusicService;
-    }
-
     public static AppDatabase getDBInstance(){
         return mAppDatabase;
     }

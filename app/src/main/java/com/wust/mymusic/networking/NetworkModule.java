@@ -1,6 +1,7 @@
 package com.wust.mymusic.networking;
 
 import com.wust.mymusic.BuildConfig;
+import com.wust.mymusic.interceptor.ProgressInterceptor;
 import com.wust.mymusic.util.ConstantUtils;
 import com.wust.mymusic.util.LogUtil;
 
@@ -15,11 +16,15 @@ import okhttp3.Cache;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
+import okhttp3.Response;
+import okhttp3.internal.platform.Platform;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.converter.scalars.ScalarsConverterFactory;
+
+import static com.wust.mymusic.util.ConstantUtils.isDebug;
 
 @Module
 public class NetworkModule {
@@ -43,20 +48,16 @@ public class NetworkModule {
             e.printStackTrace();
         }
 
-        /*return new Retrofit.Builder()
-                .baseUrl(ConstantUtils.BASE_URL)
-                .client(getOkHttpClient(cache))
-                .addConverterFactory(GsonConverterFactory.create())
-                .addConverterFactory(ScalarsConverterFactory.create())
-                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                .build();*/
+        Retrofit.Builder builder = new Retrofit.Builder().baseUrl(ConstantUtils.BASE_URL);
 
-        return new Retrofit.Builder().baseUrl(ConstantUtils.BASE_URL)
-                .client(getOkHttpClient(cache))
-                .addConverterFactory(GsonConverterFactory.create())
-                .addConverterFactory(ScalarsConverterFactory.create())
+        builder.baseUrl(isDebug?ConstantUtils.DEBUG_BASE_URL:ConstantUtils.BASE_URL);
+
+        return builder.client(getOkHttpClient(cache))
+                //.addConverterFactory(GsonConverterFactory.create())
+                //.addConverterFactory(ScalarsConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .build();
+
     }
 
     @Provides
@@ -73,7 +74,7 @@ public class NetworkModule {
 
     private OkHttpClient getOkHttpClient(Cache cache) {
         OkHttpClient okHttpClient = new OkHttpClient.Builder()
-                .addInterceptor(new Interceptor() {
+                /*.addInterceptor(new Interceptor() {
                     @Override
                     public okhttp3.Response intercept(Chain chain) throws IOException {
                         Request original = chain.request();
@@ -89,8 +90,9 @@ public class NetworkModule {
                         // Customize or return the response
                         return response;
                     }
-                })
+                })*/
                 .addInterceptor(getHttpLoggingInterceptor())
+                .addInterceptor(new ProgressInterceptor())//替换ResponseBody为ProgressResponseBody
                 .cache(cache)
                 .build();
 

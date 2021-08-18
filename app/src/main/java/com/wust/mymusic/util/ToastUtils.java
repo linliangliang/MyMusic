@@ -70,6 +70,10 @@ public class ToastUtils {
         show(resId, Toast.LENGTH_SHORT);
     }
 
+    public static void showShort(final String str) {
+        show(str, Toast.LENGTH_SHORT);
+    }
+
     private static void setBg(final TextView tvMsg) {
         if (sBgResource != -1) {
             final View toastView = toast.getView();

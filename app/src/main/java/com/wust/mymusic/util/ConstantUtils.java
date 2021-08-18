@@ -2,7 +2,7 @@ package com.wust.mymusic.util;
 
 public class ConstantUtils {
 
-    public final static boolean isLocalTest = false;//本地测试开关
+    public final static boolean isDebug = true;//本地测试开关
     public final static int PHONE_NUMBER_LENGTH = 11; // China phone number length is 11
 
     /**
@@ -29,10 +29,11 @@ public class ConstantUtils {
     /**
      * 本地服务器测试
      */
-    public static final String LOCAL_BASE_URL = "http//192.168.0.109:8080/springbootweb01";
-    public static final String LOCAL_UPLOAD_API = "/fil/upload";
-    public static final String LOCAL_INDEX_API = "/index.html";
-    public static final String LOCAL_DOWNLAOD_API = "/file/download";
+    //public static final String DEBUG_BASE_URL = "https://jingyan.baidu.com/";
+    public static final String DEBUG_BASE_URL = "http://192.168.0.109:8080/";
+    public static final String DEBUG_UPLOAD_API = "/fil/upload";
+    public static final String DEBUG_INDEX_API = "/index.html";
+    public static final String DEBUG_DOWNLAOD_API = "/file/download";
 
     /**
      * HTTP STATUS CODE

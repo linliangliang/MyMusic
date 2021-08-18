@@ -33,7 +33,7 @@ public class MainActivity extends BaseApp {
     private Bundle receiveData;
 
     @Inject
-    private NetEasyMusicService mNetEasyMusicService;
+    public NetEasyMusicService mNetEasyMusicService;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

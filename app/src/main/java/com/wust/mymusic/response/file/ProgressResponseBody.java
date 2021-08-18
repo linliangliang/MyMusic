@@ -1,5 +1,8 @@
 package com.wust.mymusic.response.file;
 
+import android.util.Log;
+
+import com.wust.mymusic.event.FileLoadEvent;
 import com.wust.mymusic.util.RxBus;
 
 import java.io.IOException;
@@ -15,6 +18,8 @@ import okio.Timeout;
 
 public class ProgressResponseBody extends ResponseBody {
 
+    private final static String TAG= "ProgressResponseBody";
+
     private ResponseBody mResponseBody;
     private BufferedSource mBufferedSource;
 
@@ -23,7 +28,6 @@ public class ProgressResponseBody extends ResponseBody {
         mResponseBody = responseBody;
     }
 
-    @android.support.annotation.Nullable
     @Override
     public MediaType contentType() {
         return mResponseBody.contentType();
@@ -36,13 +40,16 @@ public class ProgressResponseBody extends ResponseBody {
 
     @Override
     public BufferedSource source() {
-        if(mBufferedSource != null){
+        if(mBufferedSource == null){
             mBufferedSource = Okio.buffer(getSource(mResponseBody.source()));
         }
-        return null;
+        return mBufferedSource;
     }
 
     private Source getSource(Source source){
+        if(source == null){
+            Log.i(TAG,"ResponseBody.source() == null");
+        }
         return new ForwardingSource(source) {
             long bytesReaded = 0;
             @Override
@@ -50,7 +57,7 @@ public class ProgressResponseBody extends ResponseBody {
                 long bytesRead = super.read(sink, byteCount);
                 bytesReaded += bytesRead == -1 ? 0 : bytesRead;
                 //实时发送当前已读取(上传/下载)的字节
-                //RxBus.getInstance().post(new FileLoadEvent(contentLength(), bytesReaded));
+                RxBus.getInstance().post(new FileLoadEvent(contentLength(), bytesReaded));
                 return bytesRead;
             }@Override
             public Timeout timeout() {
