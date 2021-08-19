@@ -115,7 +115,7 @@ public class TestActivity extends BaseApp implements TestView{
     @NeedsPermission({Manifest.permission.READ_EXTERNAL_STORAGE,Manifest.permission.WRITE_EXTERNAL_STORAGE})
     public void startDownload(){
         showProgress();
-        mTestPresenter.startDownloadFile("http://192.168.1.10:8080/springbootweb01/file/download?filename=tem.txt");
+        mTestPresenter.startDownloadFile("http://192.168.0.109:8080/springbootweb01/file/download?filename=tem.txt");
     }
 
     @OnClick(R.id.btn_startdownload)

@@ -64,10 +64,12 @@ public class TestPresenterImpl implements TestPresenter {
              */
             @Override
             public void progress(long progress, long total) {
-                Log.i("linliang", "progress = " + progress + "total = " + total);
+                Log.i("linliang", "progress = " + progress + "  total = " + total);
                 TestActivity testActivity = (TestActivity) mViewWeakReference.get();
                 if (testActivity != null) {
                     testActivity.setDownloadProgress((int) ((int) progress * 100 / total));
+                } else {
+                    Log.i("linliang", "testActivity is null");
                 }
             }
 

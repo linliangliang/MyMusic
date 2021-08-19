@@ -51,12 +51,16 @@ public class ProgressResponseBody extends ResponseBody {
             Log.i(TAG,"ResponseBody.source() == null");
         }
         return new ForwardingSource(source) {
+            //总字节长度，避免多次调用contentLength()方法
+            long totalSize = 0L;
             long bytesReaded = 0;
             @Override
             public long read(Buffer sink, long byteCount) throws IOException {
                 long bytesRead = super.read(sink, byteCount);
                 bytesReaded += bytesRead == -1 ? 0 : bytesRead;
                 //实时发送当前已读取(上传/下载)的字节
+                Log.i(TAG, "contentLength()="+contentLength());
+                Log.i(TAG, "bytesReaded()="+bytesReaded);
                 RxBus.getInstance().post(new FileLoadEvent(contentLength(), bytesReaded));
                 return bytesRead;
             }@Override

@@ -74,23 +74,24 @@ public class NetworkModule {
 
     private OkHttpClient getOkHttpClient(Cache cache) {
         OkHttpClient okHttpClient = new OkHttpClient.Builder()
-                /*.addInterceptor(new Interceptor() {
+                .addInterceptor(new Interceptor() {
                     @Override
                     public okhttp3.Response intercept(Chain chain) throws IOException {
                         Request original = chain.request();
                         // Customize the request
                         Request request = original.newBuilder()
-                                .header("Content-Type", "application/json")
+                                .addHeader("Accept-Encoding", "identity")
+                                /*.header("Content-Type", "application/json")
                                 .removeHeader("Pragma")
-                                //.header("Cache-Control", String.format("max-age=%d", BuildConfig.CACHETIME))
-                                .header("Cache-Control", String.format("max-age=%d", 432000))
+                                .header("Cache-Control", String.format("max-age=%d", BuildConfig.CACHETIME))
+                                .header("Cache-Control", String.format("max-age=%d", 432000))*/
                                 .build();
                         okhttp3.Response response = chain.proceed(request);
                         response.cacheResponse();
                         // Customize or return the response
                         return response;
                     }
-                })*/
+                })
                 .addInterceptor(getHttpLoggingInterceptor())
                 .addInterceptor(new ProgressInterceptor())//替换ResponseBody为ProgressResponseBody
                 .cache(cache)

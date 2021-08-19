@@ -8,8 +8,8 @@ import lombok.Data;
  */
 @Data
 public class FileLoadEvent {
-    long total;//文件总长度
-    long bytesLoaded;//已经下载的长度
+    long total = -1;//文件总长度
+    long bytesLoaded = -1;//已经下载的长度
 
     public FileLoadEvent(long total, long bytesLoaded) {
         this.total = total;
